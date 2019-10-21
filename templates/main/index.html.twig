@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cartulary{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>List of Classes</h2>
+        <a href="{{ path('create_class') }}">Create Class</a><br><br><br>
+        {% for schoolclass in schoolclasses %}
+            <div class="card-body">
+                <div>Number: {{ schoolclass.number }}</div>
+                <br>
+                <div>Letter: {{ schoolclass.letter }}</div>
+                <div class="text-white bg-white"><a href="{{ path('single_class', {'schoolclass': schoolclass.id}) }}">Watch</a></div><br><br>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

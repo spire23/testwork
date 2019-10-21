@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cartulary{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Class</h2>
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div>Number: {{ schoolclass.number }}</div><br>
+                <div>Letter: {{ schoolclass.letter }}</div><br>
+                <div class="text-white bg-white"><a href="{{ path('update_schoolclass', {schoolclass: schoolclass.id}) }}">Edit</a></div>
+                <div class="text-white bg-white"><a href="{{ path('delete_schoolclass', {schoolclass: schoolclass.id}) }}">Delete</a></div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <h2>Student</h2><br>
+        {% for student in schoolclass.students %}
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    {#<div>Second name: {{ student.second_name }}</div><br>#}
+                    <div>Name: {{ student.name }}</div><br>
+                    <div>Patronymic: {{ student.patronymic }}</div><br>
+                    <div>Sex: {{ student.sex }}</div><br>
+                    <div>Birthday: {{ student.birthday|date('Y-m-d') }}</div><br>
+                    <div class="text-black bg-white"><a href="{{ path('student_update_form', {'schoolclass': schoolclass.id, 'student': student.id}) }}">Edit</a></div>
+                    <div class="text-black bg-white"><a href="{{ path('student_delete', {'schoolclass': schoolclass.id, 'student': student.id}) }}">Delete</a></div>
+                </div>
+            </div>
+            <br>
+            <br>
+        {% endfor %}
+        {{ render(controller('App\\Controller\\StudentController::create', {'schoolclass':schoolclass.id})) }}
+
+    </div>
+
+{% endblock %}
