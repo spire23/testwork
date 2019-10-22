@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Student;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,11 +18,16 @@ class StudentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('second_name', TextType::class, ['label' => 'Second name'])
-            ->add('name', TextType::class, ['label' => 'Name'])
-            ->add('patronymic', TextType::class, ['label' => 'Patronymic'])
-            ->add('sex', TextType::class, ['label' => 'Sex'])
-            ->add('birthday', DateTimeType::class, ['label' => 'Birthday'])
+            ->add('lastname', TextType::class, ['label' => 'Фамилия'])
+            ->add('name', TextType::class, ['label' => 'Имя'])
+            ->add('patronymic', TextType::class, ['label' => 'Отчество'])
+            ->add('sex', ChoiceType::class, ['label' => 'Пол',
+                'choices' => [
+                    'М' => 'мужской',
+                    'Ж' => 'женский',
+                ]
+            ])
+            ->add('birthday', BirthdayType::class, ['label' => 'Дата рождения'])
         ;
     }
 

@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cartulary{% endblock %}
+{% block title %}Журнал{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h2>List of Classes</h2>
-        <a href="{{ path('create_class') }}">Create Class</a><br><br><br>
+        <h2>Список классов</h2>
+        <br><br><br>
         {% for schoolclass in schoolclasses %}
             <div class="card-body">
-                <div>Number: {{ schoolclass.number }}</div>
-                <br>
-                <div>Letter: {{ schoolclass.letter }}</div>
-                <div class="text-white bg-white"><a href="{{ path('single_class', {'schoolclass': schoolclass.id}) }}">Watch</a></div><br><br>
+                <div>{{ schoolclass.number }} {{ schoolclass.letter }}</div>
+                <div class="text-white bg-white"><a href="{{ path('single_class', {'schoolclass': schoolclass.id}) }}">Просмотр</a></div><br><br>
             </div>
         {% endfor %}
+        <a href="{{ path('create_class') }}">Создать новый класс</a>
     </div>
 {% endblock %}

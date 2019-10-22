@@ -20,11 +20,6 @@ class Student
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $second_name;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $name;
 
     /**
@@ -37,10 +32,6 @@ class Student
      */
     private $sex;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $birthday;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\SchoolClass", inversedBy="students")
@@ -48,21 +39,19 @@ class Student
      */
     private $schoolclass;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birthday;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSecondName(): ?string
-    {
-        return $this->second_name;
-    }
-
-    public function setSecondName(?string $second_name): self
-    {
-        $this->second_name = $second_name;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -101,18 +90,6 @@ class Student
         return $this;
     }
 
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(?\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
     /**
      * Set schoolclass
      *
@@ -133,5 +110,29 @@ class Student
      */
     public function getSchoolclass(){
         return $this->schoolclass;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(?string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(?\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
+        return $this;
     }
 }

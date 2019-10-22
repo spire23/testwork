@@ -5,9 +5,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OrderBy;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SchoolClassRepository")
+ * @UniqueEntity(
+ *     fields={"number", "letter"},
+ *     message="Такой класс уже существует"
+ * )
  */
 class SchoolClass
 {

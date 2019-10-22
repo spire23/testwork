@@ -45,7 +45,7 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/stident/update/{schoolclass}/{student}", name="student_update_form")
+     * @Route("/student/update/{schoolclass}/{student}", name="student_update_form")
      */
     public function update(Request $request, SchoolClass $schoolclass, Student $student){
         $form = $this->createForm(StudentType::class, $student, [

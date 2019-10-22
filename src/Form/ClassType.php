@@ -17,8 +17,8 @@ class ClassType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('number', IntegerType::class, ['label' => 'Number'])
-            ->add('letter', TextType::class, ['label' => 'Letter'])
+            ->add('number', IntegerType::class, ['label' => 'Номер'])
+            ->add('letter', TextType::class, ['label' => 'Литера', 'attr' => ['pattern' => '^[а-яА-Я]$']])
         ;
     }
 
