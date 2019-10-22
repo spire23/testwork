@@ -6,11 +6,11 @@
     <div class="container">
         <h2>Список классов</h2>
         {% for schoolclass in schoolclasses %}
-            <div class="card-body border-bottom">
+            <div class="card-body">
                 <div>{{ schoolclass.number }} {{ schoolclass.letter }}</div>
                 <div class="text-white bg-white"><a href="{{ path('single_class', {'schoolclass': schoolclass.id}) }}">Просмотр</a></div>
             </div>
         {% endfor %}
-        <a href="{{ path('create_class') }}">Создать новый класс</a>
+        <a class="btn btn-primary" href="{{ path('create_class') }}">Создать новый класс</a>
     </div>
 {% endblock %}

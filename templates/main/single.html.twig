@@ -3,28 +3,26 @@
 {% block title %}Список классов{% endblock %}
 
 {% block body %}
+    <a class="btn btn-primary" href="{{ path('schoolclass') }}">Назад</a>
     <div class="container">
         <h2>Класс</h2>
         <div class="card text-dark">
             <div class="card-body">
-                <div>Номер: {{ schoolclass.number }}</div><br>
-                <div>Литера: {{ schoolclass.letter }}</div><br>
+                <div>Номер: {{ schoolclass.number }}</div>
+                <div>Литера: {{ schoolclass.letter }}</div>
                 <div class="text-white bg-white"><a href="{{ path('update_schoolclass', {schoolclass: schoolclass.id}) }}">Редактировать</a></div>
                 <div class="text-white bg-white"><a href="{{ path('delete_schoolclass', {schoolclass: schoolclass.id}) }}">Удалить</a></div>
             </div>
         </div>
-        <br>
-        <br>
-
-        <h2>Ученики</h2><br>
+        <h2>Ученики</h2>
         {% for student in schoolclass.students %}
             <div class="card text-dark">
                 <div class="card-body">
-                    <div>Фамилия: {{ student.lastname }}</div><br>
-                    <div>Имя: {{ student.name }}</div><br>
-                    <div>Отчество: {{ student.patronymic }}</div><br>
-                    <div>Пол: {{ student.sex }}</div><br>
-                    <div>Дата рождения: {{ student.birthday|date('Y-m-d') }}</div><br>
+                    <div>Фамилия: {{ student.lastname }}</div>
+                    <div>Имя: {{ student.name }}</div>
+                    <div>Отчество: {{ student.patronymic }}</div>
+                    <div>Пол: {{ student.sex }}</div>
+                    <div>Дата рождения: {{ student.birthday|date('Y-m-d') }}</div>
                     <div class="text-black bg-white"><a href="{{ path('student_update_form', {'schoolclass': schoolclass.id, 'student': student.id}) }}">Редактировать</a></div>
                     <div class="text-black bg-white"><a href="{{ path('student_delete', {'schoolclass': schoolclass.id, 'student': student.id}) }}">Удалить</a></div>
                 </div>
