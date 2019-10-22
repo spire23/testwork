@@ -5,11 +5,10 @@
 {% block body %}
     <div class="container">
         <h2>Список классов</h2>
-        <br><br><br>
         {% for schoolclass in schoolclasses %}
-            <div class="card-body">
+            <div class="card-body border-bottom">
                 <div>{{ schoolclass.number }} {{ schoolclass.letter }}</div>
-                <div class="text-white bg-white"><a href="{{ path('single_class', {'schoolclass': schoolclass.id}) }}">Просмотр</a></div><br><br>
+                <div class="text-white bg-white"><a href="{{ path('single_class', {'schoolclass': schoolclass.id}) }}">Просмотр</a></div>
             </div>
         {% endfor %}
         <a href="{{ path('create_class') }}">Создать новый класс</a>
